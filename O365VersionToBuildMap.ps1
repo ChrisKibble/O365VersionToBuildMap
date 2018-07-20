@@ -73,4 +73,3 @@ Function Get-Office365BuildToVersionMap {
     Return $officeBuildList
 }
 
-Get-Office365BuildToVersionMap | Export-CSV $env:temp\Office365BuildToVersionMap.csv -NoTypeInformation
