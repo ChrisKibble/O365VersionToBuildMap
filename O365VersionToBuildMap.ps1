@@ -19,12 +19,14 @@ Function Get-Office365BuildToVersionMap {
 
             * Bring in Insider Build Information.
             * Better Error Handling.
+            * Create Function to Create SQL Case Statements for SCCM/ConfigMgr.
 
     #>
 
     [regex]$rxBuilds = '<p><em>Version (.*)<\/em><\/p>'                 # Regular Expression that Finds the Version/BUild Numbers from the Page
     $urlBase = "https://docs.microsoft.com/en-us/officeupdates"         # Start page for all Office Update pages by Year and Update Type
     $officeBuildList = @()                                              # Array to hold the list of Versions and Builds
+    $yearList = 2015..$(get-date).Year                                  # List of all years from 2015 to now.
 
     # Identify all the possible URLs from 2015 to the Current Year (future proofing?).  Not all of these channels existed in 2015, so a 404 is
     # expected on at least one of them.  There may also not be all pages for the current year if updates haven't been released yet.
@@ -70,3 +72,5 @@ Function Get-Office365BuildToVersionMap {
 
     Return $officeBuildList
 }
+
+Get-Office365BuildToVersionMap | Export-CSV $env:temp\Office365BuildToVersionMap.csv -NoTypeInformation

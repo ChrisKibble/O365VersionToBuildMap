@@ -11,7 +11,7 @@ The purpose of this function is to go to the Microsoft support sites and downloa
 
 ## Example Output
 
-BuildNumber|VersionNumber |Source
+BuildNumber|VersionNumber|Source
 ---|---|---
 1509|16.0.4229.1024|https://docs.microsoft.com/en-us/officeupdates/monthly-channel-2015
 1509|16.0.4229.1024|https://docs.microsoft.com/en-us/officeupdates/semi-annual-channel-targeted-2015
