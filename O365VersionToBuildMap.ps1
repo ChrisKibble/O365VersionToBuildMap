@@ -167,3 +167,4 @@ Function Get-OfficeBuildListToSQLTable {
     Return $sql
 }
 
+
