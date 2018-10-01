@@ -60,7 +60,7 @@ Manager (SCCM) for reporting or adhoc queries.
 
 ### Example Function Calls for Get-OfficeBuildListToSQLTable
 
-    $sql = Get-OfficeBuildListToSQLTable
+    $sql = Get-OfficeBuildListToSQLTable -officeBuildList $(Get-Office365BuildToVersionMap) | Out-File $env:temp\O365SQL.txt
 
 Sample Output (abbreviated):
 
