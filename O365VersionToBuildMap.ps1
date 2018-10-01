@@ -147,7 +147,7 @@ Function Get-OfficeBuildListToSQLTable {
     $sql += "/*`r`n"
 
     if(!$dontDropTable) {
-        # There are better ways to do this in SQL2016, but we can't konw the version this will run against.
+        # There are better ways to do this in SQL2016, but we can't know the version this will run against.
         $sql += "IF OBJECT_ID('$tableName', 'U') IS NOT NULL DROP TABLE $tableName;`r`n"
     }
 
