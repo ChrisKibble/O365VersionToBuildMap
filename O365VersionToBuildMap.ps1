@@ -27,7 +27,7 @@ Function Get-Office365BuildToVersionMap {
     [regex]$rxBuilds = '<p><em>Version (.*)<\/em><\/p>'                 # Regular Expression that Finds the Version/BUild Numbers from the Page
     $urlBase = "https://docs.microsoft.com/en-us/officeupdates"         # Start page for all Office Update pages by Year and Update Type
     $officeBuildList = @()                                              # Array to hold the list of Versions and Builds
-    $yearList = 2015..$(get-date).Year                                  # List of all years from 2015 to now.
+    $yearList = 2015..2019                                              # List of all years from 2015 to 2019.
 
     # Identify all the possible URLs from 2015 to the Current Year (future proofing?).  Not all of these channels existed in 2015, so a 404 is
     # expected on at least one of them.  There may also not be all pages for the current year if updates haven't been released yet.
@@ -38,6 +38,12 @@ Function Get-Office365BuildToVersionMap {
         $urlList += "$urlBase/semi-annual-channel-$year"
         $urlList += "$urlBase/semi-annual-channel-targeted-$year"
     }
+    
+    # As of 10/16/2020 the new channel urls don't have years appended to them. This will probally change in 2021 and break this. If that happens another yearlist loop from 2020 till current year will be needed.
+    $urlList += "$urlBase/current-channel"
+    $urlList += "$urlBase/monthly-enterprise-channel"
+    $urlList += "$urlBase/semi-annual-enterprise-channel"
+    $urlList += "$urlBase/semi-annual-enterprise-channel-preview"
 
     ForEach($url in $urlList) {
 
